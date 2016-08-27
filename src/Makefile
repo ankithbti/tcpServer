@@ -23,9 +23,13 @@ MAIN_OBJ = $(patsubst %.cpp, %.o, $(MAIN_SRC))
 INCS = -I../include \
 	   -I../../Common/include \
 	   -I../../third_party/spdlog/include \
+	   -I${SQLITE_ROOT}/include \
+	   -I${MYSQL_CPP_ROOT}/include \
        -I$(BOOST_BASE)/include \
 
 LIBS = \
+		-L${SQLITE_ROOT}/lib -lsqlite3 \
+		-L${MYSQL_CPP_ROOT}/lib -lmysqlcppconn \
         -L$(BOOST_BASE)/lib -lboost_thread \
         -L$(BOOST_BASE)/lib -lboost_system \
         -L$(BOOST_BASE)/lib -lboost_chrono \
