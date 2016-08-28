@@ -9,9 +9,21 @@
 #include <cppconn/warning.h>
 #include <cppconn/prepared_statement.h>
 
+#include <TrackingAllocator.hpp>
+#include <vector>
+
 using namespace amt;
 
 int main(){
+
+	std::vector<int, TrackingAllocator<int> > v;
+	v.reserve(10);
+	for(int i = 0 ; i < 10 ; ++i){
+		std::cout << " Pushing " << (i+1) << " element. " << std::endl;
+		v.push_back(i+1);
+	}
+
+	return 0;
 
 	sql::Connection *con = NULL;
 	sql::Driver * driver = get_driver_instance();
